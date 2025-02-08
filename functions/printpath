@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+printpath() {
+
+  echo -e "${PATH//:/\\n}"
+
+}
+
+printpath

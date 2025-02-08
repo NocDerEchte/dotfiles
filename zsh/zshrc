@@ -1,0 +1,65 @@
+# ~~~~~ ZSH.rc Config ~~~~~ #
+
+# Add custom functions to PATH
+PATH=$PATH:$DOTFILES_REPO/functions
+
+# Path to oh-my-zsh installation
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
+
+
+# History settings
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
+
+# Enable completions of aliases
+setopt completealiases
+
+# Set zsh theme
+ZSH_THEME="refined"
+
+# set update behaviour of oh-my-zsh
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# List for oh-my-zsh plugins
+plugins=(
+    fzf
+    zoxide
+    fzf-tab
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+
+# Source oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+# Default applications
+export BROWSER='chrome'
+
+# Language
+export LC_ALL=C.UTF-8
+
+# ~~~ Custom Environment Variables ~~~ #
+export GITHUB_USER='nocderechte'
+export GITHUB_REPOS="$HOME/Repos/github.com"
+export GITHUB_REPOS_PERSONAL="$GITHUB_REPOS/$GITHUB_USER"
+export DOTFILES_REPO="$GITHUB_REPOS_PERSONAL/dotfiles"
+
+# ~~~ Aliases ~~~ #
+alias ls="ls --color"
+alias ll="ls -lha --group-directories-first"
+alias lt="ls -lhat"
+alias lr="ls -lhatr"
+
+alias c="clear"
+alias cat="batcat" # always use better cat
+alias cd="z" # always use zoxide instead of cd
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

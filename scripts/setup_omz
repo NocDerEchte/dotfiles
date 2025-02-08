@@ -1,0 +1,39 @@
+#!/usr/bin/bash
+
+install_omz() {
+
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+}
+
+clone_omz_plugins() {
+
+  declare -A omz_plugins=(
+    ["fzf_tab"]="https://github.com/Aloxaf/fzf-tab"
+    ["zsh_syntax_highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    ["fast_syntax_highlighting"]="https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
+    ["zsh_autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions.git"
+  )
+
+
+  for plugin in "${!omz_plugins[@]}"; do
+    if [ -d "$HOME/.oh-my-zsh/custom/plugins/$plugin" ]; then
+      printf "cloning %s plugin\n" "$plugin"
+      git clone "${omz_plugins[$plugin]}" "$HOME/.oh-my-zsh/custom/plugins/$plugin"
+    fi
+  done
+
+  printf 'all plugins available.\n'
+
+}
+
+
+if [ ! -d "$HOME/.oh-my-zsh/" ]; then
+  printf 'Installing oh-my-zsh.\n'
+
+  install_omz
+else
+  printf 'Oh-my-zsh already installed.\n'
+fi
+
+clone_omz_plugins
