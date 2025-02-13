@@ -81,7 +81,7 @@ program = "/usr/bin/zsh"
 
 [window]
 decorations = "full"
-opacity = 0.70
+opacity = 0.90
 
 [window.class]
 general = "Alacritty"
