@@ -6,7 +6,7 @@ if [ $UID -eq 0 ]; then
   exit 1
 fi
 
-readonly DOTFILES_DIR="$HOME/Repos/nocderechte/dotfiles"
+readonly DOTFILES_DIR="$HOME/Repos/github.com/nocderechte/dotfiles"
 
 create_symlinks() {
 
