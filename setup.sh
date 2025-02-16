@@ -1,37 +1,110 @@
 #!/usr/bin/bash
 
 
-if [ ! -f "$PWD/setup.sh" ]; then
-  printf 'Run this script directly and not like this: "./dir1/dir2/setup.sh"\nInstead use:"./setup.sh"\n'
-  exit 1
-fi
-
 if [ $UID -eq 0 ]; then
   printf "Do not run this script as sudo or with the root user!\nThe script will ask for permission if needed.\n"
   exit 1
 fi
 
+readonly DOTFILES_DIR="$HOME/Repos/nocderechte/dotfiles"
 
-link_files() {
+create_symlinks() {
 
-  declare -r zsh_confdir=$HOME
-  declare -r alacritty_confdir=$HOME"/.config/alacritty/"
-  declare -r tmux_confdir=$HOME"/.config/tmux/"
+  readonly USER_CONF_DIR="$HOME/.config"
+  readonly USER_FONT_DIR="$HOME/.local/share/fonts"
 
-  mkdir -p "$zsh_confdir"
-  mkdir -p "$alacritty_confdir"
-  mkdir -p "$tmux_confdir"
+  # create config directories if missing
+  mkdir -p "$USER_CONF_DIR/alacritty"
+  mkdir -p "$USER_CONF_DIR/tmux"
 
-  ln -sf "$PWD/zsh/zshrc" "$zsh_confdir/.zshrc"
-  ln -sf "$PWD/alacritty/alacritty.toml" "$alacritty_confdir/alacritty.toml"
-  ln -sf "$PWD/tmux/tmux.conf" "$tmux_confdir/tmux.conf"
+  # create symlinks for config files
+  ln -sf "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc"
+  ln -sf "$DOTFILES_DIR/alacritty/alacritty.toml" "$USER_CONF_DIR/alacritty/alacritty.toml"
+  ln -sf "$DOTFILES_DIR/tmux/tmux.conf" "$USER_CONF_DIR/tmux/tmux.conf"
+
+  # create symlinks for font files
+  ln -sf "$DOTFILES_DIR/fonts/*.ttf" "$USER_FONT_DIR"
+  fc-cache
 
 }
 
-printf 'Starting package installation script.\nSudo rights required.\n'
-sudo ./scripts/install_pkgs.sh
+install_packages() {
+  local base_pkgs=(
+    git
+    curl
+    zsh
+    tmux
+    bat
+    fzf
+    zoxide
+  )
+
+  local extra_pkgs=(
+    code
+    spotify-client
+    steam
+    chrome
+  )
+
+
+  printf "\\b--- Base packages ---\n"
+  printf "\\b - %s\n" "${base_pkgs[@]}"
+  read -r -p 'Install all packages in this list? [Y/n]' input
+
+  if [[ $input == "n" || $input == "N" ]]; then
+    printf "Skipping\n\n"
+  else
+    sudo apt-get install -y "${base_pkgs[@]}"
+    printf '\n\n'
+  fi
+
+
+  printf "\\b--- Extra packages ---\n"
+  printf "\\b - %s\n" "${extra_pkgs[@]}"
+  read -r -p 'Install all packages in this list? [Y/n]' input
+
+  if [[ $input == "n" || $input == "N" ]]; then
+    printf "Skipping\n\n"
+  else
+    sudo apt-get install -y "${base_pkgs[@]}"
+    printf '\n\n'
+  fi
+}
+
+setup_omz() {
+
+  if [ ! -d "$HOME/.oh-my-zsh/" ]; then
+    printf 'Installing oh-my-zsh.\n'
+
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  else
+    printf 'Oh-my-zsh already installed.\n'
+  fi
+
+  declare -A omz_plugins=(
+    ["fzf_tab"]="https://github.com/Aloxaf/fzf-tab"
+    ["zsh_syntax_highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    ["fast_syntax_highlighting"]="https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
+    ["zsh_autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions.git"
+  )
+
+  for plugin in "${!omz_plugins[@]}"; do
+    if [ -d "$HOME/.oh-my-zsh/custom/plugins/$plugin" ]; then
+      printf "cloning %s plugin\n" "$plugin"
+      git clone "${omz_plugins[$plugin]}" "$HOME/.oh-my-zsh/custom/plugins/$plugin"
+    fi
+  done
+
+  printf 'all plugins available.\n'
+
+}
+
+
+printf 'Starting package installation.\n'
+install_packages
 
 printf 'Starting oh-my-zsh setup.\n'
-./scripts/setup_omz
+setup_omz
 
-link_files
+printf 'Creating symlinks for config files.\n'
+create_symlinks

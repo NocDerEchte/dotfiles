@@ -68,7 +68,7 @@ color = "#f5e0dc"
 size = 11
 
 [font.normal]
-family = "JetBrainsMonoNerdFontMono"
+family = "JetBrainsMonoNLNerdFont"
 style = "Regular"
 
 [scrolling]
@@ -81,7 +81,7 @@ program = "/usr/bin/zsh"
 
 [window]
 decorations = "full"
-opacity = 0.90
+opacity = 0.85
 
 [window.class]
 general = "Alacritty"
