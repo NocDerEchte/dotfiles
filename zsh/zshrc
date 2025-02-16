@@ -1,8 +1,5 @@
 # ~~~~~ ZSH.rc Config ~~~~~ #
 
-# Add custom functions to PATH
-PATH=$PATH:$DOTFILES_REPO/scripts
-
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
@@ -47,6 +44,9 @@ export LC_ALL=C.UTF-8
 # ~~~ Custom Environment Variables ~~~ #
 export GITHUB_USER='nocderechte'
 export DOTFILES_DIR="$HOME/Repos/github.com/$GITHUB_USER/dotfiles"
+
+# Add custom scripts to PATH
+PATH=$PATH:$DOTFILES_REPO/scripts
 
 # ~~~ Aliases ~~~ #
 alias ls="ls --color"
