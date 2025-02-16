@@ -46,7 +46,7 @@ export GITHUB_USER='nocderechte'
 export DOTFILES_DIR="$HOME/Repos/github.com/$GITHUB_USER/dotfiles"
 
 # Add custom scripts to PATH
-PATH=$PATH:$DOTFILES_REPO/scripts
+PATH=$PATH:$DOTFILES_DIR/scripts
 
 # ~~~ Aliases ~~~ #
 alias ls="ls --color"
