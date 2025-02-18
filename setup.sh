@@ -11,7 +11,7 @@ readonly DOTFILES_DIR="$HOME/Repos/github.com/nocderechte/dotfiles"
 create_symlinks() {
 
   readonly USER_CONF_DIR="$HOME/.config"
-  readonly USER_FONT_DIR="$HOME/.local/share/fonts"
+  readonly USER_FONT_DIR="$HOME/.local/share/fonts/"
 
   # create config directories if missing
   mkdir -p "$USER_CONF_DIR/alacritty"
@@ -23,7 +23,7 @@ create_symlinks() {
   ln -sf "$DOTFILES_DIR/tmux/tmux.conf" "$USER_CONF_DIR/tmux/tmux.conf"
 
   # create symlinks for font files
-  ln -sf "$DOTFILES_DIR/fonts/*.ttf" "$USER_FONT_DIR"
+  find "$DOTFILES_DIR/fonts/" -name "*.ttf" -exec ln -sf {} "$USER_FONT_DIR" \;
   fc-cache
 
 }
