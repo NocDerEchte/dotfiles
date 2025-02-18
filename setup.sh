@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 
 if [ $UID -eq 0 ]; then
@@ -11,11 +11,12 @@ readonly DOTFILES_DIR="$HOME/Repos/github.com/nocderechte/dotfiles"
 create_symlinks() {
 
   readonly USER_CONF_DIR="$HOME/.config"
-  readonly USER_FONT_DIR="$HOME/.local/share/fonts/"
+  readonly FONT_DIR="$HOME/.local/share/fonts/"
 
   # create config directories if missing
   mkdir -p "$USER_CONF_DIR/alacritty"
   mkdir -p "$USER_CONF_DIR/tmux"
+  mkdir -p "$FONT_DIR"
 
   # create symlinks for config files
   ln -sf "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc"
@@ -23,7 +24,7 @@ create_symlinks() {
   ln -sf "$DOTFILES_DIR/tmux/tmux.conf" "$USER_CONF_DIR/tmux/tmux.conf"
 
   # create symlinks for font files
-  find "$DOTFILES_DIR/fonts/" -name "*.ttf" -exec ln -sf {} "$USER_FONT_DIR" \;
+  find "$DOTFILES_DIR/fonts/" -name "*.ttf" -exec ln -sf {} "$FONT_DIR" \;
   fc-cache
 
 }
@@ -78,7 +79,7 @@ setup_omz() {
 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   else
-    printf 'Oh-my-zsh already installed.\n'
+    printf 'Oh-my-zsh is already installed.\n'
   fi
 
   declare -A omz_plugins=(
@@ -89,13 +90,13 @@ setup_omz() {
   )
 
   for plugin in "${!omz_plugins[@]}"; do
-    if [ -d "$HOME/.oh-my-zsh/custom/plugins/$plugin" ]; then
-      printf "cloning %s plugin\n" "$plugin"
+    if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/$plugin" ]; then
+      printf "%s plugin missing. Cloning...\n\n" "$plugin"
       git clone "${omz_plugins[$plugin]}" "$HOME/.oh-my-zsh/custom/plugins/$plugin"
     fi
   done
 
-  printf 'all plugins available.\n'
+  printf 'All custom oh-my-zsh plugins available.\n\n'
 
 }
 
@@ -106,5 +107,7 @@ install_packages
 printf 'Starting oh-my-zsh setup.\n'
 setup_omz
 
-printf 'Creating symlinks for config files.\n'
+printf 'Creating symlinks for config files and fonts.\n'
 create_symlinks
+
+printf '\nDotfiles setup finished.\n'

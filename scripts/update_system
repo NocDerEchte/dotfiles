@@ -1,13 +1,8 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-update_system() {
-
-  sudo -s -- <<EOF
-  apt update
-  apt upgrade -y
-  apt autoremove -y
-  apt autoclean -y
+sudo -s -- <<EOF
+apt update
+apt upgrade -y
+apt autoremove -y
+apt autoclean -y
 EOF
-}
-
-update_system
