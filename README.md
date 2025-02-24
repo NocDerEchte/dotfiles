@@ -11,7 +11,7 @@ Setting up my Dotfiles is as simple as running the following commands in the ter
 DOTFILES_DIR="$HOME/Repos/github.com/nocderechte"
 mkdir -p $DOTFILES_DIR
 cd $DOTFILES_DIR
-git clone git@github.com:NocDerEchte/dotfiles.git
+git clone https://github.com/NocDerEchte/dotfiles.git
 cd dotfiles
 ```
 
