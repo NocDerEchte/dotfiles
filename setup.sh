@@ -37,7 +37,6 @@ install_packages() {
     tmux
     bat
     fzf
-    zoxide
   )
 
   local extra_pkgs=(
@@ -85,7 +84,6 @@ setup_omz() {
   declare -A omz_plugins=(
     ["fzf_tab"]="https://github.com/Aloxaf/fzf-tab"
     ["zsh_syntax_highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    ["fast_syntax_highlighting"]="https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
     ["zsh_autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions.git"
   )
 

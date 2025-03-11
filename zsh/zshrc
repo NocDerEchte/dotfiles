@@ -26,10 +26,10 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # List for oh-my-zsh plugins
 plugins=(
     fzf
-    zoxide
     fzf-tab
     zsh-autosuggestions
     zsh-syntax-highlighting
+    terraform
 )
 
 # Source oh-my-zsh
@@ -58,6 +58,4 @@ alias c="clear"
 alias cat="batcat" # always use better cat
 alias cd="z" # always use zoxide instead of cd
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias -g -- --help='--help 2>&1 | cat --language=help --style=plain'
