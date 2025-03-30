@@ -30,6 +30,7 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     terraform
+    zsh-kubectl-prompt
 )
 
 # Source oh-my-zsh
@@ -45,6 +46,8 @@ export LC_ALL=C.UTF-8
 export GITHUB_USER='nocderechte'
 export DOTFILES_DIR="$HOME/Repos/github.com/$GITHUB_USER/dotfiles"
 
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+
 # Add custom scripts to PATH
 PATH=$PATH:$DOTFILES_DIR/scripts
 
@@ -56,6 +59,9 @@ alias lr="ls -lhatr"
 
 alias c="clear"
 alias cat="batcat" # always use better cat
-alias cd="z" # always use zoxide instead of cd
+
+alias kubens="kubectl config set-context --current --namespace "
+alias kubectx="kubectl config use-context "
+
 
 alias -g -- --help='--help 2>&1 | cat --language=help --style=plain'
