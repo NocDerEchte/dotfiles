@@ -9,12 +9,12 @@ NOCOLOR='\e[0m'
 
 # Directories
 DOTFILES_DIR="$HOME/Repos/github.com/nocderechte/dotfiles"
-XDG_BIN_HOME="${HOME}/.local/bin/"
+XDG_BIN_HOME="${HOME}/.local/bin"
 
-XDG_CACHE_HOME="${HOME}/.cache/"
-XDG_CONFIG_HOME="${HOME}/.config/"
-XDG_DATA_HOME="${HOME}/.local/share/"
-XDG_STATE_HOME="${HOME}/.local/state/"
+XDG_CACHE_HOME="${HOME}/.cache"
+XDG_CONFIG_HOME="${HOME}/.config"
+XDG_DATA_HOME="${HOME}/.local/share"
+XDG_STATE_HOME="${HOME}/.local/state"
 
 
 function _print_info() {
