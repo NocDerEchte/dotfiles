@@ -89,7 +89,7 @@ _link_configs() {
   done
 
   # Create symlink for .zshenv
-  ln -sf "${DOTFILES_DIR}/.zshenv" "${HOME}/.zshrnv"
+  ln -sf "${DOTFILES_DIR}/.zshenv" "${HOME}/.zshenv"
 }
 
 function _link_fonts() {

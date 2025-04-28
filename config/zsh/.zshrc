@@ -26,5 +26,3 @@ setopt SHARE_HISTORY
 precmd() {
   tmux refresh-client -S
 }
-
-
