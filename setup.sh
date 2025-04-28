@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-
-if [ $UID -eq 0 ]; then
+if [[ $UID == 0 ]]; then
   printf "Do not run this script as sudo or with the root user!\nThe script will ask for permission if needed.\n"
   exit 1
 fi
@@ -69,33 +68,6 @@ install_packages() {
     sudo apt-get install -y "${base_pkgs[@]}"
     printf '\n\n'
   fi
-}
-
-setup_omz() {
-
-  if [ ! -d "$HOME/.oh-my-zsh/" ]; then
-    printf 'Installing oh-my-zsh.\n'
-
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  else
-    printf 'Oh-my-zsh is already installed.\n'
-  fi
-
-  declare -A omz_plugins=(
-    ["fzf_tab"]="https://github.com/Aloxaf/fzf-tab"
-    ["zsh_syntax_highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    ["zsh_autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions.git"
-  )
-
-  for plugin in "${!omz_plugins[@]}"; do
-    if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/$plugin" ]; then
-      printf "%s plugin missing. Cloning...\n\n" "$plugin"
-      git clone "${omz_plugins[$plugin]}" "$HOME/.oh-my-zsh/custom/plugins/$plugin"
-    fi
-  done
-
-  printf 'All custom oh-my-zsh plugins available.\n\n'
-
 }
 
 

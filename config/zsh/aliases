@@ -1,0 +1,13 @@
+# === zsh aliases ===
+
+alias ls='ls --color'
+alias ll='ls -lha --group-directories-first'
+alias lt='ls -lhat'
+alias lr='ls -lhatr'
+
+alias c='xclip -selection clipboard'
+alias p='xclip -o -selection clipboard'
+
+alias k='kubectl'
+alias kcn='kubectl config set-context --current --namespace'
+alias kcx='kubectl config set-context'
