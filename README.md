@@ -6,7 +6,9 @@ The purpose of this Repository is to have all my main configuration in one place
 ## Setup
 
 ### Ubuntu
+
 Setting up my Dotfiles is as simple as running the following commands in the terminal:
+
 ```bash
 DOTFILES_DIR="$HOME/Repos/github.com/nocderechte"
 mkdir -p $DOTFILES_DIR
@@ -16,8 +18,11 @@ cd dotfiles
 ```
 
 After that run the `setup.sh` script to set everything up:
+
 ```bash
-./setup.sh
+./bootstrap.sh
 ```
+
 ___
+
 Feel free to use my Dotfiles as-is or take inspiration for your own setup.
