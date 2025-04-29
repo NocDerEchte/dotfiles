@@ -105,17 +105,6 @@ function _link_fonts() {
 
 }
 
-function _link_binaries() {
-  local bin_dir
-
-  bin_dir="${DOTFILES_DIR}/bin"
-
-  _print_info '== Creating symlinks for binaries =='
-
-  find "${bin_dir}" -type f -exec ln -sf {} "${XDG_BIN_HOME}" \; && _print_info 'Successfully created symlinks for binaries.'
-
-}
-
 function main() {
 
   _print_info ' _____        _    __ _ _'
@@ -133,8 +122,6 @@ function main() {
   source "${DOTFILES_DIR}/install.sh"
   _print_info ''
   _link_fonts
-  _print_info ''
-  _link_binaries
   _print_info ''
   _link_configs
   _print_info ''
