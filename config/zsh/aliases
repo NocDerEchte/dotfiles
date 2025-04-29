@@ -1,4 +1,6 @@
-# === zsh aliases ===
+#!/usr/bin/env zsh
+#
+# zsh aliases file: collection of all zsh aliases
 
 alias ls='ls --color'
 alias ll='ls -lha --group-directories-first'

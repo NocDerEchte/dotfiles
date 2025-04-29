@@ -1,14 +1,14 @@
 #!/usr/bin/env zsh
 #
-# zsh environment file, loaded when zsh is started
+# zsh environment file: loaded when zsh is started
 
-export ZDOTDIR="${ZDOTDIR:-$HOME/.config/zsh}"
+export ZDOTDIR="${HOME}/.config/zsh"
 
 # xdg standardized paths
-export XDG_CONFIG_HOME="${HOME}/.config/"
-export XDG_DATA_HOME="${HOME}/.local/share/"
-export XDG_CACHE_HOME="${HOME}/.cache/"
-export XDG_STATE_HOME="${HOME}/.local/state/"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_STATE_HOME="${HOME}/.local/state"
 
 # Ensure all directories exist
 () {
@@ -31,7 +31,6 @@ export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---color=selected-bg:#45475a \
 --color=border:#313244,label:#cdd6f4"
 
 # oh-my-posh theme

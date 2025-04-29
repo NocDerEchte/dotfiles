@@ -1,11 +1,12 @@
-# === zsh rc === #
+#!/usr/bin/env zsh
+#
+# zsh rc file: general shell config
 
 # Source custom aliases
 source "${XDG_CONFIG_HOME}/zsh/aliases"
 
 # Load zap zsh plugins
 source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
-
 plug 'zap-zsh/supercharge'
 plug 'wintermi/zsh-oh-my-posh'
 plug 'embeddedpenguin/sanekeybinds'
