@@ -119,7 +119,9 @@ function _link_binaries() {
 
   _print_info '== Creating symlinks for binaries =='
 
-  ln -sf "${bin_dir}/*" "${XDG_BIN_HOME}/" && _print_info 'Successfully created symlinks for binaries.'
+  find "${bin_dir}" -type f -exec ln -sf {} "${XDG_BIN_HOME}" \; && _print_info 'Successfully created symlinks for binaries.'
+
+  # ln -sf $bin_dir/* "${XDG_BIN_HOME}/" && _print_info 'Successfully created symlinks for binaries.'
 }
 
 # curl -s https://ohmyposh.dev/install.sh | bash -s -- -d "${HOME}/.local/bin/"

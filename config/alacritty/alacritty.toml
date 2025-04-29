@@ -77,7 +77,7 @@ multiplier = 3
 
 [shell]
 args = ["-l", "-c", "tmux"]
-program = "/usr/bin/zsh"
+program = "~/.local/bin/zsh"
 
 [window]
 decorations = "full"
