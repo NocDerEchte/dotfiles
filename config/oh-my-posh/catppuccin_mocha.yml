@@ -1,48 +1,57 @@
 ---
 palette:
-  os: '#ACB0BE'
-  closer: 'p:os'
-  pink: '#F5C2E7'
-  lavender: '#B4BEFE'
-  blue: '#89B4FA'
-blocks:
-  - type: prompt
-    alignment: left
-    segments:
-      - type: os
-        foreground: 'p:os'
-        style: plain
-        template: '{{.Icon}} '
-      - type: path
-        foreground: 'p:pink'
-        properties:
-          home_icon: '~'
-          style: full
-        style: plain
-        template: '{{ .Path }} '
-      - type: git
-        foreground: 'p:lavender'
-        properties:
-          fetch_status: true
-          fetch_upstream_icon: true
-          fetch_user: true
-          branch_icon: ''
-          source: cli
-        template: 'on {{ .HEAD }}{{if .Working.Changed }}*{{ end }}'
-        style: plain
-      - type: kubectl
-        style: powerline
-        foreground: 'p:os'
-        template: " |  {{ if .Cluster }}{{ .Cluster }}{{ end }}{{ if .Namespace }}:{{ .Namespace }}{{ end }} "
-      - type: text
-        style: plain
-        foreground: 'p:closer'
-        template: |2-
-
-           
-final_space: true
+    blue: '#89B4FA'
+    closer: p:os
+    lavender: '#B4BEFE'
+    os: '#ACB0BE'
+    pink: '#F5C2E7'
+secondary_prompt:
+    template: '❯❯ '
+    foreground: '#FEF5ED'
+    background: transparent
 transient_prompt:
-  background: transparent
-  foreground: '#FEF5ED'
-  template: "{{ .Shell }}> "
+    template: '❯ '
+    foreground: '#FEF5ED'
+    background: transparent
+blocks:
+    - type: prompt
+      alignment: left
+      segments:
+        - properties:
+            cache_duration: none
+          template: '{{.Icon}} '
+          foreground: p:os
+          type: os
+          style: plain
+        - properties:
+            cache_duration: none
+            home_icon: "~"
+            style: full
+          template: '{{ .Path }} '
+          foreground: p:pink
+          type: path
+          style: plain
+        - properties:
+            branch_icon: ""
+            cache_duration: none
+            fetch_status: true
+            fetch_upstream_icon: true
+            fetch_user: true
+            source: cli
+          template: on {{ .HEAD }}{{if .Working.Changed }}*{{ end }}
+          foreground: p:lavender
+          type: git
+          style: plain
+      newline: true
+    - type: prompt
+      alignment: left
+      segments:
+        - properties:
+            cache_duration: none
+          template: '❯'
+          foreground: p:closer
+          type: text
+          style: plain
+      newline: true
 version: 3
+final_space: true
