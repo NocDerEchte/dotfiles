@@ -2,12 +2,14 @@
 #
 # zsh aliases file: collection of all zsh aliases
 
-alias ls='ls --color'
+alias ls='ls --color=auto'
 alias ll='ls -lha --group-directories-first'
 alias lt='ls -lhat'
 alias lr='ls -lhatr'
 
-alias c='xclip -selection clipboard'
+alias c='clear'
+
+alias cp='xclip -selection clipboard'
 alias p='xclip -o -selection clipboard'
 
 alias k='kubectl'
