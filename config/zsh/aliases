@@ -9,9 +9,16 @@ alias lr='ls -lhatr'
 
 alias c='clear'
 
+# copy
 alias cp='xclip -selection clipboard'
 alias p='xclip -o -selection clipboard'
 
+# k8s
 alias k='kubectl'
 alias kcn='kubectl config set-context --current --namespace'
 alias kcx='kubectl config set-context'
+
+# git
+alias gc='git commit -m'
+alias ga='git add'
+alias gstat='git status'
