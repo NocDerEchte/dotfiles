@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Bootstraps a new machine for the dotfiles
+# Bootstrap a new machine
 
 
 # Define colors for easier usage
@@ -8,7 +8,7 @@ RED='\e[32m'
 NOCOLOR='\e[0m'
 
 # Directories
-DOTFILES_DIR="$HOME/Repos/github.com/nocderechte/dotfiles"
+DOTFILES_DIR="${HOME}/Repos/github.com/nocderechte/dotfiles"
 XDG_BIN_HOME="${HOME}/.local/bin"
 
 XDG_CACHE_HOME="${HOME}/.cache"
@@ -56,32 +56,26 @@ function _create_dirs() {
   done
 }
 
-# function _prepare_profile() {
-#   cat <<EOF > "${PROFILE_HOME}/xdg_config.sh"
-#     #!/usr/bin/env bash
-#     export XDG_CACHE_HOME="${HOME}/.cache"
-#     export XDG_CONFIG_HOME="${HOME}/.config"
-#     export XDG_DATA_HOME="${HOME}/.local/share"
-#     export XDG_STATE_HOME="${HOME}/.local/state"
-#     export PROFILE_HOME="${HOME}/.profile"
-# EOF
-# }
-
 _link_configs() {
   local dotfiles_conf_dir xdg_config_home dir dir_name dest_dir
 
   dotfiles_conf_dir="${DOTFILES_DIR}/config"
-  xdg_config_home="${XDG_CONFIG_HOME%/}"
+  xdg_config_home="${XDG_CONFIG_HOME}"
 
-  _print_info '== Creating symlinks for config =='
+  _print_info '== Creating symlinks for configs =='
 
-  for dir in "${dotfiles_conf_dir}"/* ; do
+  for dir in "${dotfiles_conf_dir}"/*; do
+    if ! [[ -d "${dir}" ]]; then
+      _print_info "${dir} is not a directory. Skipping."
+      continue
+    fi
+
     dir_name="$(basename "${dir}")"
     dest_dir="${xdg_config_home}/${dir_name}"
 
-    if [[ -d "${dest_dir}" || -L "${dest_dir}" ]]; then
-      _print_info "Backing up ${dest_dir}"
-      mv "${dest_dir}" "${dest_dir}.bak"
+    if [[ -L "${dest_dir}" ]]; then
+      _print_info "Unlinking ${dest_dir}"
+      unlink "${dest_dir}"
     fi
 
     ln -sf "${dir}" "${dest_dir}"
@@ -109,7 +103,6 @@ function _link_fonts() {
   # Reload font cache
   fc-cache
 
-
 }
 
 function _link_binaries() {
@@ -121,11 +114,7 @@ function _link_binaries() {
 
   find "${bin_dir}" -type f -exec ln -sf {} "${XDG_BIN_HOME}" \; && _print_info 'Successfully created symlinks for binaries.'
 
-  # ln -sf $bin_dir/* "${XDG_BIN_HOME}/" && _print_info 'Successfully created symlinks for binaries.'
 }
-
-# curl -s https://ohmyposh.dev/install.sh | bash -s -- -d "${HOME}/.local/bin/"
-
 
 function main() {
 
@@ -138,12 +127,18 @@ function main() {
   _print_info ''
 
 
-  _print_info "=== Setup starting ==="
+  _print_info '=== Setup starting ==='
   _create_dirs
+  _print_info ''
+  source "${DOTFILES_DIR}/install.sh"
+  _print_info ''
   _link_fonts
+  _print_info ''
   _link_binaries
+  _print_info ''
   _link_configs
-  _print_info "=== Setup finished ==="
+  _print_info ''
+  _print_info '=== Setup finished ==='
 }
 
 main
