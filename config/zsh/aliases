@@ -19,6 +19,8 @@ alias kcn='kubectl config set-context --current --namespace'
 alias kcx='kubectl config set-context'
 
 # git
-alias gc='git commit -m'
+alias gst='git status --short'
+alias gc='git commit --status --verbose'
 alias ga='git add'
-alias gstat='git status'
+alias gp='git push'
+alias gu='git pull'
