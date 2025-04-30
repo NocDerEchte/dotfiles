@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Custom scripts for the right status bar in tmux
+# Configuration for the left satus bar in tmux
 
 function _delimiter() {
   printf "%s" " | "
@@ -14,7 +14,7 @@ function _kube_info() {
     kube_cluster="$(echo "${kube_current_context}" | awk '{print $3}')"
     kube_namespace="$(echo "${kube_current_context}" | awk '{print $5}')"
 
-    printf "%s" "󱃾 ${kube_cluster}:${kube_namespace}"
+    printf '%s' "󱃾 ${kube_cluster}:${kube_namespace}"
   fi
 
 }
@@ -27,7 +27,7 @@ function _memory_usage() {
   mem_usage="$(("${mem_total}" - "${mem_available}"))"
   using_percent="$(("${mem_usage}" * 100 / "${mem_total}" ))"
 
-  printf "%s" "mem: ${using_percent}%"
+  printf '%s' "mem: ${using_percent}%"
 }
 
 function main() {

@@ -7,11 +7,11 @@ palette:
     pink: '#F5C2E7'
 secondary_prompt:
     template: '❯❯ '
-    foreground: '#FEF5ED'
+    foreground: p:pink
     background: transparent
 transient_prompt:
     template: '❯ '
-    foreground: '#FEF5ED'
+    foreground: p:pink
     background: transparent
 blocks:
     - type: prompt
@@ -20,7 +20,7 @@ blocks:
         - properties:
             cache_duration: none
           template: '{{.Icon}} '
-          foreground: p:os
+          foreground: p:pink
           type: os
           style: plain
         - properties:
@@ -49,7 +49,7 @@ blocks:
         - properties:
             cache_duration: none
           template: '❯'
-          foreground: p:closer
+          foreground: p:pink
           type: text
           style: plain
       newline: true
