@@ -9,9 +9,8 @@ alias lr='ls -lhatr'
 
 alias c='clear'
 
-# copy
-alias cp='xclip -selection clipboard'
-alias p='xclip -o -selection clipboard'
+# copy to clip
+alias copy='xclip -selection clipboard'
 
 # k8s
 alias k='kubectl'
