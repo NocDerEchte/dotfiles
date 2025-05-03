@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Get the current kubernetes cluster and namespace
+
+function _get_kube_info() {
+  local kube_current_context kube_cluster kube_namespace
+
+  if [[ $(which kubectl) ]]; then
+    kube_current_context="$(kubectl config get-contexts | grep '\*')"
+    kube_cluster="$(echo "${kube_current_context}" | awk '{print $3}')"
+    kube_namespace="$(echo "${kube_current_context}" | awk '{print $5}')"
+
+    printf '%s' "󱃾 ${kube_cluster}:${kube_namespace}"
+  fi
+
+}
+
+
+function main() {
+  _get_kube_info
+}
+
+main
