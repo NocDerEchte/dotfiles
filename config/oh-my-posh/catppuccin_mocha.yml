@@ -63,6 +63,12 @@ blocks:
             fetch_upstream_icon: true
             fetch_user: true
             source: cli
+        - type: python
+          style: plain
+          template: '  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}'
+          foreground: p:green
+          properties:
+            display_mode: always
       newline: true
     - type: prompt
       alignment: left
