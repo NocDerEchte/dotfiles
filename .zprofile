@@ -18,7 +18,7 @@ export XDG_BIN_HOME="${HOME}/.local/bin"
 } XDG_{CONFIG,DATA,CACHE,STATE,BIN}_HOME
 
 # default programs
-export EDITOR='code'
+export EDITOR='code --wait'
 
 # custom zsh dir
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
