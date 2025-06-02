@@ -82,8 +82,8 @@ _link_configs() {
     _print_info "Created symlink: ${dir} -> ${dest_dir}"
   done
 
-  # Create symlink for .zshenv
-  ln -sf "${DOTFILES_DIR}/.zshenv" "${HOME}/.zshenv"
+  # Create symlink for .zprofile
+  ln -sf "${DOTFILES_DIR}/.zprofile" "${HOME}/.zprofile"
 }
 
 function _link_fonts() {

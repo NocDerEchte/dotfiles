@@ -1,6 +1,6 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #
-# zsh aliases file: collection of all zsh aliases
+# zsh aliases file: collection of all aliases
 
 alias ls='ls --color=auto'
 alias ll='ls -lha --group-directories-first'
