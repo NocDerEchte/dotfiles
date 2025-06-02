@@ -1,57 +1,84 @@
 ---
 palette:
-    blue: '#89B4FA'
-    closer: p:os
-    lavender: '#B4BEFE'
-    os: '#ACB0BE'
-    pink: '#F5C2E7'
+  rosewater: '#f5e0dc'
+  flamingo:  '#f2cdcd'
+  pink:      '#f5c2e7'
+  mauve:     '#cba6f7'
+  red:       '#f38ba8'
+  maroon:    '#eba0ac'
+  peach:     '#fab387'
+  yellow:    '#f9e2af'
+  green:     '#a6e3a1'
+  teal:      '#94e2d5'
+  sky:       '#89dceb'
+  sapphire:  '#74c7ec'
+  blue:      '#89b4fa'
+  lavender:  '#b4befe'
+  text:      '#cdd6f4'
+  subtext1:  '#bac2de'
+  subtext0:  '#a6adc8'
+  overlay2:  '#9399b2'
+  overlay1:  '#7f849c'
+  overlay0:  '#6c7086'
+  surface2:  '#585b70'
+  surface1:  '#45475a'
+  surface0:  '#313244'
+  base:      '#1e1e2e'
+  mantle:    '#181825'
+  crust:     '#11111b'
 secondary_prompt:
     template: '❯❯ '
-    foreground: '#FEF5ED'
+    foreground: p:mauve
     background: transparent
 transient_prompt:
     template: '❯ '
-    foreground: '#FEF5ED'
+    foreground: p:mauve
     background: transparent
 blocks:
     - type: prompt
       alignment: left
       segments:
-        - properties:
-            cache_duration: none
-          template: '{{.Icon}} '
-          foreground: p:os
-          type: os
+        - type: os
           style: plain
-        - properties:
+          template: '{{.Icon}} '
+          foreground: p:mauve
+          properties:
+            cache_duration: none
+        - type: path
+          style: plain
+          template: '{{ .Path }} '
+          foreground: p:blue
+          properties:
             cache_duration: none
             home_icon: "~"
             style: full
-          template: '{{ .Path }} '
-          foreground: p:pink
-          type: path
+        - type: git
           style: plain
-        - properties:
+          template: on {{ .HEAD }}{{if .Working.Changed }}*{{ end }}
+          foreground: p:surface1
+          properties:
             branch_icon: ""
             cache_duration: none
             fetch_status: true
             fetch_upstream_icon: true
             fetch_user: true
             source: cli
-          template: on {{ .HEAD }}{{if .Working.Changed }}*{{ end }}
-          foreground: p:lavender
-          type: git
+        - type: python
           style: plain
+          template: '  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}'
+          foreground: p:green
+          properties:
+            display_mode: always
       newline: true
     - type: prompt
       alignment: left
       segments:
-        - properties:
-            cache_duration: none
-          template: '❯'
-          foreground: p:closer
-          type: text
+        - type: text
           style: plain
+          template: '❯'
+          foreground: p:mauve
+          properties:
+            cache_duration: none
       newline: true
 version: 3
 final_space: true

@@ -17,7 +17,7 @@ git clone https://github.com/NocDerEchte/dotfiles.git
 cd dotfiles
 ```
 
-After that run the `setup.sh` script to set everything up:
+After that run the `bootstrap.sh` script to set everything up:
 
 ```bash
 ./bootstrap.sh

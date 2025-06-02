@@ -68,7 +68,7 @@ color = "#f5e0dc"
 size = 11
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [scrolling]

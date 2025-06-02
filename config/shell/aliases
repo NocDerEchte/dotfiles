@@ -1,6 +1,6 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #
-# zsh aliases file: collection of all zsh aliases
+# zsh aliases file: collection of all aliases
 
 alias ls='ls --color=auto'
 alias ll='ls -lha --group-directories-first'
@@ -9,9 +9,8 @@ alias lr='ls -lhatr'
 
 alias c='clear'
 
-# copy
-alias cp='xclip -selection clipboard'
-alias p='xclip -o -selection clipboard'
+# copy to clip
+alias copy='xclip -selection clipboard'
 
 # k8s
 alias k='kubectl'
@@ -19,6 +18,8 @@ alias kcn='kubectl config set-context --current --namespace'
 alias kcx='kubectl config set-context'
 
 # git
-alias gc='git commit -m'
+alias gst='git status --short'
+alias gc='git commit --status --verbose'
 alias ga='git add'
-alias gstat='git status'
+alias gp='git push'
+alias gu='git pull'

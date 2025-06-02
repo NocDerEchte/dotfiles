@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Get the current date for tmux status
+
+function _get_date() {
+
+  printf '%s' "$(date '+%d-%m-%Y')"
+
+}
+
+
+function main() {
+  _get_date
+}
+
+main
