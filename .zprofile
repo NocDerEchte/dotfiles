@@ -29,9 +29,6 @@ export DOTFILES_DIR="${HOME}/Repos/github.com/nocderechte/dotfiles"
 # add custom scripts to PATH
 export PATH=$PATH:$DOTFILES_DIR/scripts
 
-# load custom aliases
-source "${XDG_CONFIG_HOME}/shell/aliases"
-
 # fzf color settings
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \

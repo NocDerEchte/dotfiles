@@ -2,9 +2,8 @@
 #
 # zsh rc file: general shell config
 
-# === General settings ===
-
-# === Shell looks ===
+# load custom aliases
+[[ -f "${XDG_CONFIG_HOME}/shell/aliases" ]] && source "${XDG_CONFIG_HOME}/shell/aliases"
 
 # Load oh-my-posh theme
 export POSH_THEME="${XDG_CONFIG_HOME}/oh-my-posh/catppuccin_mocha.yml"
@@ -35,7 +34,7 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 autoload -Uz compinit
 compinit
 
-# === zsh hooks ===
+# zsh hooks
 precmd() {
   tmux refresh-client -S
 }
