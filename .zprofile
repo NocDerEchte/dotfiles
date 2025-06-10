@@ -26,8 +26,8 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # dotfiles repo location
 export DOTFILES_DIR="${HOME}/Repos/github.com/nocderechte/dotfiles"
 
-# add custom scripts to PATH
-export PATH=$PATH:$DOTFILES_DIR/scripts
+# add custom scripts and go-bin to PATH
+export PATH="${PATH}":"${DOTFILES_DIR}/scripts":"${HOME}/.local/go/bin"
 
 # fzf color settings
 export FZF_DEFAULT_OPTS=" \
