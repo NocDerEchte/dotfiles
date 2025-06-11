@@ -26,8 +26,12 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # dotfiles repo location
 export DOTFILES_DIR="${HOME}/Repos/github.com/nocderechte/dotfiles"
 
-# add custom scripts and go-bin to PATH
-export PATH="${PATH}":"${DOTFILES_DIR}/scripts":"${HOME}/.local/go/bin"
+# go related env vars
+export GOROOT="${HOME}/.local/go"
+export GOPATH="${XDG_DATA_HOME}/go"
+export GOBIN="${XDG_BIN_HOME}"
+export GOCACHE="${XDG_CACHE_HOME}/go-build"
+export GOMODCACHE="${XDG_CACHE_HOME}/go-mod"
 
 # fzf color settings
 export FZF_DEFAULT_OPTS=" \
@@ -35,3 +39,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --color=border:#313244,label:#cdd6f4"
+
+# update PATH
+export PATH="${PATH}:${DOTFILES_DIR}/scripts:${GOROOT}/bin"
+typeset -U path # remove redundant entries in PATH
