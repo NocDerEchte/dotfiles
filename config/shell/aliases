@@ -15,7 +15,12 @@ alias copy='xclip -selection clipboard'
 # k8s
 alias k='kubectl'
 alias kcn='kubectl config set-context --current --namespace'
-alias kcx='kubectl config set-context'
+alias kcx='kubectl config use-context'
+
+# terraform
+alias tf='terraform'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
 
 # git
 alias gst='git status --short'
