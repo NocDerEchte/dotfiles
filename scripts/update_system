@@ -1,8 +1,9 @@
 #!/bin/env bash
+#
+# simple package updates
 
 sudo -s -- <<EOF
-apt update
-apt upgrade -y
-apt autoremove -y
-apt autoclean -y
+apt-get update &&
+apt-get upgrade -y &&
+apt-get autoremove -y
 EOF

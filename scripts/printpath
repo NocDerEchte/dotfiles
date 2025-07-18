@@ -1,3 +1,5 @@
 #!/bin/env bash
+#
+# prints $PATH in a more readable format
 
 echo -e "${PATH//:/\\n}"
