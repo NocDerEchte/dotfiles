@@ -35,6 +35,6 @@ autoload -Uz compinit
 compinit
 
 # zsh hooks
-precmd() {
-  tmux refresh-client -S
-}
+# precmd() {
+#   tmux refresh-client -S
+# }
