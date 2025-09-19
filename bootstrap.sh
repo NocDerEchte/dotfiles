@@ -8,9 +8,8 @@ RED='\e[32m'
 NOCOLOR='\e[0m'
 
 # Directories
-DOTFILES_DIR="${HOME}/Repos/github.com/nocderechte/dotfiles"
+DOTFILES_DIR="${DOTFILES_DIR:=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)}"
 XDG_BIN_HOME="${HOME}/.local/bin"
-
 XDG_CACHE_HOME="${HOME}/.cache"
 XDG_CONFIG_HOME="${HOME}/.config"
 XDG_DATA_HOME="${HOME}/.local/share"
@@ -111,7 +110,7 @@ function main() {
   _print_info '|  __ \      | |  / _(_) |'
   _print_info '| |  | | ___ | |_| |_ _| | ___  ___'
   _print_info '| |  | |/ _ \| __|  _| | |/ _ \/ __|'
-  _print_info '| |__| | (_) | |_| | | | |  __/\__ \'
+  _print_info '| |__| | (_) | |_| | | | |  __/\__ \ '
   _print_info '|_____/ \___/ \__|_| |_|_|\___||___/'
   _print_info ''
 
