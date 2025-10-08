@@ -1,9 +1,16 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #
 # zsh rc file: general shell config
 
 # load custom aliases
 [[ -f "${XDG_CONFIG_HOME}/shell/aliases" ]] && source "${XDG_CONFIG_HOME}/shell/aliases"
+
+# run ssh-agent on startup
+if [[ ! -S "${HOME}/.ssh/auth.sock" ]]; then
+  eval ssh-agent
+  ln -sf "$SSH_AUTH_SOCK" "${HOME}/.ssh/auth.sock"
+fi
+export SSH_AUTH_SOCK="${HOME}/.ssh/auth.sock"
 
 # Load oh-my-posh theme
 export POSH_THEME="${XDG_CONFIG_HOME}/oh-my-posh/catppuccin_mocha.yml"
