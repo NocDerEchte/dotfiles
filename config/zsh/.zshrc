@@ -9,8 +9,8 @@
 if [[ ! -S "${HOME}/.ssh/auth.sock" ]]; then
   eval $(ssh-agent -s)
   ln -sf "$SSH_AUTH_SOCK" "${HOME}/.ssh/auth.sock"
-  export SSH_AUTH_SOCK="${HOME}/.ssh/auth.sock"
 fi
+export SSH_AUTH_SOCK="${HOME}/.ssh/auth.sock"
 
 # Load oh-my-posh theme
 export POSH_THEME="${XDG_CONFIG_HOME}/oh-my-posh/catppuccin_mocha.yml"
