@@ -76,7 +76,7 @@ history = 1000
 multiplier = 3
 
 [shell]
-args = ["-l", "-c", "tmux"]
+args = ["-l", "-c", "zellij"]
 program = "/usr/bin/zsh"
 
 [window]
