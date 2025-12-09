@@ -5,22 +5,29 @@
 set -euo pipefail
 
 _generate_session_name() {
-    local base_name_1="$(basename "$PWD")"
-    local base_name_2="$(basename "$(dirname "$PWD")")"
-    local sesstion_name="${base_name_2}-${base_name_1}"
+    local base_name_1
+    local base_name_2
+    local sesstion_name
+
+    base_name_1="$(basename "$PWD")"
+    base_name_2="$(basename "$(dirname "$PWD")")"
+    sesstion_name="${base_name_2}-${base_name_1}"
 
     echo "${sesstion_name}"
 }
 
 _attach_or_create_session() {
-    local session_name="$(_generate_session_name)"
-    local session_layout="${@:-compact}"
+    local session_layout
+    local session_name
+
+    session_layout="${1:-compact}"
+    session_name="$(_generate_session_name)"
 
     zellij attach "${session_name}" 2> /dev/null || zellij -n "${session_layout}" -s "${session_name}"
 }
 
 main() {
-    _attach_or_create_session "${@}"
+    _attach_or_create_session "${1}"
 }
 
-main "${@}"
+main "${1:-}"
