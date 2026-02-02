@@ -285,7 +285,7 @@ theme "catppuccin-mocha"
 
 // Choose the path to override cwd that zellij will use for opening new panes
 //
-// default_cwd "/tmp"
+default_cwd "$PWD"
 
 // The name of the default layout to load on startup
 // Default: "default"
