@@ -37,6 +37,10 @@ setopt SHARE_HISTORY
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
+# ssh completion
+zstyle ':completion:::ssh::' known-hosts-files ~/.ssh/known_hosts /etc/ssh/ssh_known_hosts
+zstyle ':completion:::(ssh|scp|sftp|rsync)::' hosts off
+
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
