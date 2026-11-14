@@ -28,3 +28,6 @@ alias gc='git commit --status --verbose'
 alias ga='git add'
 alias gp='git push'
 alias gu='git pull'
+
+# vscode
+alias codeipc='export VSCODE_IPC_HOOK_CLI="$(ls -t /run/user/$UID/vscode-ipc-*.sock | head -n1)"'
